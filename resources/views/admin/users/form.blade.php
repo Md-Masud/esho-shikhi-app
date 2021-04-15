@@ -84,7 +84,7 @@
                                 </div>
                             </div>
 
-                            <a  class="btn btn-danger m-t-15 waves-effect" href="{{ route('admin.users.index') }}">BACK</a>
+                            <a  class="btn btn-danger m-t-15 waves-effect" href="{{ isset($user)? route('admin.dashboard'): route('admin.user.index')}}">BACK</a>
                         <button type="submit" class="btn btn-primary">
                             @if(isset($user))
                                 {{ __('Update User') }}

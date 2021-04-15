@@ -68,7 +68,7 @@
                         <i class="material-icons">apps</i>
                     </div>
                     <div class="content">
-                        <div class="text">CATEGORIES</div>
+                        <div class="text">COURSE</div>
                         <div class="number count-to" data-from="0" data-to="{{ $category }}" data-speed="15" data-fresh-interval="20"></div>
                     </div>
                 </div>
@@ -95,99 +95,81 @@
                         <i class="material-icons">fiber_new</i>
                     </div>
                     <div class="content">
-                        <div class="text">TODAY AUTHOR</div>
-{{--                        <div class="number count-to" data-from="0" data-to="{{ $new_authors_today }}" data-speed="15" data-fresh-interval="20"></div>--}}
+                        <div class="text"> COURSE ENROLL </div>
+                        <div class="number count-to" data-from="0" data-to="{{ $enroll }}" data-speed="15" data-fresh-interval="20"></div>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
+            <div class="row clearfix">
+            <div class="col-lg-4 col-md-8 col-sm-8 col-xs-8">
                 <div class="card">
                     <div class="header">
-                        <h2>MOST POPULAR POST</h2>
+                        <h2>USER LIST</h2>
                     </div>
                     <div class="body">
                         <div class="table-responsive">
                             <table class="table table-hover dashboard-task-infos">
                                 <thead>
                                     <tr>
-                                        <th>Rank</th>
-                                        <th>Title</th>
-                                        <th>Author</th>
-                                        <th>Views</th>
-                                        <th>Favorite</th>
-                                        <th>Comments</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
+                                        <th>USER ID</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-{{--                                    @foreach($popular_posts as $key=>$post)--}}
-{{--                                        <tr>--}}
-{{--                                            <td>{{ $key + 1 }}</td>--}}
-{{--                                            <td>{{ str_limit($post->title,'20') }}</td>--}}
-{{--                                            <td>{{ $post->user->name }}</td>--}}
-{{--                                            <td>{{ $post->view_count }}</td>--}}
-{{--                                            <td>{{ $post->favorite_to_users_count }}</td>--}}
-{{--                                            <td>{{ $post->comments_count }}</td>--}}
-{{--                                            <td>--}}
-{{--                                                @if($post->status == true)--}}
-{{--                                                    <span class="label bg-green">Published</span>--}}
-{{--                                                @else--}}
-{{--                                                    <span class="label bg-red">Pending</span>--}}
-{{--                                                @endif--}}
-{{--                                            </td>--}}
-{{--                                            <td>--}}
-{{--                                                <a class="btn btn-sm btn-primary waves-effect" target="_blank" href="{{ route('post.details',$post->slug) }}">View</a>--}}
-{{--                                            </td>--}}
-{{--                                        </tr>--}}
-{{--                                    @endforeach--}}
+                                    @foreach($users as $key=>$user)
+                                        <tr>
+                                            <td>{{ $key + 1 }}</td>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>
+                                                <a class="btn btn-sm btn-primary waves-effect" target="_blank" href="{{ route('admin.users.show',$user->id) }}">View</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- #END# Widgets -->
-
-        <div class="row clearfix">
-            <!-- Task Info -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="col-lg-4 col-md-8 col-sm-8 col-xs-8">
                 <div class="card">
                     <div class="header">
-                        <h2>TOP 10 ACTIVE AUTHOR</h2>
+                        <h2>TEACHER LIST</h2>
                     </div>
                     <div class="body">
                         <div class="table-responsive">
                             <table class="table table-hover dashboard-task-infos">
                                 <thead>
                                 <tr>
-                                    <th>Rank List</th>
+                                    <th>TEACHER ID</th>
                                     <th>Name</th>
-                                    <th>Posts</th>
-                                    <th>Comments</th>
-                                    <th>Favorite</th>
+                                    <th>Email</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-{{--                                    @foreach($active_authors as $key=>$author)--}}
-{{--                                        <tr>--}}
-{{--                                            <td>{{ $key + 1 }}</td>--}}
-{{--                                            <td>{{ $author->name }}</td>--}}
-{{--                                            <td>{{ $author->posts_count }}</td>--}}
-{{--                                            <td>{{ $author->comments_count }}</td>--}}
-{{--                                            <td>{{ $author->favorite_posts_count }}</td>--}}
-{{--                                        </tr>--}}
-{{--                                    @endforeach--}}
+                                @foreach($teachers as $key=>$teacher)
+                                    <tr>
+                                        <td>{{ $key + 1 }}</td>
+                                        <td>{{ $teacher->name }}</td>
+                                        <td>{{ $teacher->email }}</td>
+                                        <td>
+                                            <a class="btn btn-sm btn-primary waves-effect" target="_blank" href="{{ route('admin.users.show',$teacher->id) }}">View</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- #END# Task Info -->
         </div>
-    </div>
+        </div>
+        <!-- #END# Widgets -->
+
+
 @endsection
 
 @push('js')

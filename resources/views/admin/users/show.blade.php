@@ -20,7 +20,7 @@
                         </span>
                         {{ __('Edit') }}
                     </a>
-                    <a href="{{ route('admin.users.index') }}" class="btn-shadow btn btn-danger">
+                    <a href="{{isset($user) ?route('admin.dashboard'): route('admin.users.index')  }}" class="btn-shadow btn btn-danger">
                         <span class="btn-icon-wrapper pr-2 opacity-7">
                             <i class="fas fa-arrow-circle-left fa-w-20"></i>
                         </span>

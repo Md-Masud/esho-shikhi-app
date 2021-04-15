@@ -18,7 +18,7 @@
         </p>
     </div><br>
    <div class="col-sm-4">
-       <h3 style="text-align: center;" ><a class="bg-primary text-white"  href="#">LOGIN ENROLL</a></h3>
+       <h3 style="text-align: center;" ><a class="bg-primary text-white"  href="{{route('user.enroll',$course->id)}}">LOGIN ENROLL</a></h3>
        <div class="card">
            <div class="card-body">
 

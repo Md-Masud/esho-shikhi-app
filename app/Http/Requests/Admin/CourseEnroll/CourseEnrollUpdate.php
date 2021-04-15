@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Teacher\Post;
+namespace App\Http\Requests\Admin\CourseEnroll;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StorePostRequest extends FormRequest
+class CourseEnrollUpdate extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,7 @@ class StorePostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
-//            'video' => 'required|mimes:mp4,ppx, ppt, pptx,pdf,ogv,jpg,webm|max:1999',
-             'category_id' => 'unique:categories',
-            'body' => 'required',
+            //
         ];
     }
 }

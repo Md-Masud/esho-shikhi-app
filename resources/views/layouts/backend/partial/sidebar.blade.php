@@ -88,6 +88,19 @@
                         <span>Post</span>
                     </a>
                 </li
+            @else
+                <li class="{{ Request::is('user/dashboard') ? 'active' : '' }}">
+                    <a href="{{ route('user.dashboard') }}">
+                        <i class="material-icons">dashboard</i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="{{ Request::is('user/course') ? 'active' : '' }}">
+                    <a href="{{ route('user.my.course') }}">
+                        <i class="material-icons">label</i>
+                        <span>My Course</span>
+                    </a>
+                </li
             @endif
             <li class="">
                 <a class="dropdown-item" href="{{ route('logout') }}"

@@ -13,8 +13,8 @@ class UserEnroll extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function post()
+    public  function  category()
     {
-        return $this->belongsTo(Post::class);
+        return $this->belongsTo(Category::class);
     }
 }

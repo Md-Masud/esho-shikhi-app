@@ -29,7 +29,7 @@ class AddUserIdToCategoriesTable extends Migration
     public function down()
     {
         Schema::table('categories', function (Blueprint $table) {
-            schema::drop('user_id');
+            Schema::drop('user_id');
         });
     }
 }

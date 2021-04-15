@@ -68,7 +68,7 @@
                         <i class="material-icons">apps</i>
                     </div>
                     <div class="content">
-                        <div class="text">CATEGORIES</div>
+                        <div class="text">COURSE</div>
                         {{--                        <div class="number count-to" data-from="0" data-to="{{ $category_count }}" data-speed="15" data-fresh-interval="20"></div>--}}
                     </div>
                 </div>

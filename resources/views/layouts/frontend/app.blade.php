@@ -6,7 +6,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+
     <!-- Bootstrap CSS -->
+
     <link rel="stylesheet" href="{{asset('assets/frontend/css/bootstrap.min.css')}}">
     <!-- MAIN CSS-->
     <link rel="stylesheet" href="{{asset('assets/frontend/css/main.css')}}">
@@ -20,6 +22,10 @@
     <link rel="stylesheet" href="{{asset('assets/frontend/css/nice-select.css')}}">
     <!--- awl carousel -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/frontend/css/owl.carousel.min.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     @stack('css')
 </head>
 <body>
@@ -74,6 +80,7 @@
 <!--Footer-section End-->
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
 <script src="{{asset('assets/frontend/js/jquery-3.4.1.min.js')}}"></script>
 <script src="{{asset('assets/frontend/js/popper.min.js')}}"></script>
 <script src="{{asset('assets/frontend/js/bootstrap.min.js')}}"></script>
@@ -84,6 +91,20 @@
 
 <!-- My Js-->
 <script src="{{asset('assets/frontend/js/main.js')}}"></script>
+<script src="{{ asset('assets/backend/js/demo.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+{!! Toastr::message() !!}
+<script>
+    const toastr = require("jquery");
+    @if($errors->any())
+    @foreach($errors->all() as $error)
+    toastr.error('{{ $error }}','Error',{
+        closeButton:true,
+        progressBar:true,
+    });
+    @endforeach
+    @endif
+</script>
 </body>
 @stack('js')
 </html>

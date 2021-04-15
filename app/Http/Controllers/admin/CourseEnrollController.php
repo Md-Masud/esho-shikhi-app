@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\CourseEnroll\CourseEnrollCreateRequest;
+use App\Http\Requests\Admin\CourseEnroll\CourseEnrollUpdate;
 use App\Repository\Backend\CategoryRepository;
 use App\Repository\Backend\CourseEnrollRepository;
 use Illuminate\Http\Request;
@@ -30,10 +32,10 @@ class CourseEnrollController extends Controller
 
 
 
-    public function store(Request $request)
+    public function store(CourseEnrollCreateRequest $courseEnrollCreateRequest)
     {
         try {
-            $this->courseEnrollController->createCourseEnroll($request);
+            $this->courseEnrollController->createCourseEnroll($courseEnrollCreateRequest);
             $this->setSuccessMessage('Enroll Successfully Saved');
             return redirect()->back();
         } catch (Exception $e) {
@@ -48,10 +50,10 @@ class CourseEnrollController extends Controller
         return view ('admin.CourseEnroll.edit',compact('courseEnroll','categories'));
     }
 
-    public function update($id,Request $request)
+    public function update($id,CourseEnrollUpdate $courseEnrollUpdate)
     {
         try {
-            $this->courseEnrollController->updateCourseEnroll($id,$request);
+            $this->courseEnrollController->updateCourseEnroll($id,$courseEnrollUpdate);
             $this->setSuccessMessage('CourseEnroll Successfully edit');
             return redirect()->back();
         } catch (Exception $e) {

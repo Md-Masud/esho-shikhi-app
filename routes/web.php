@@ -38,6 +38,10 @@ Route::group(['as'=>'teacher.','prefix'=>'teacher','middleware'=>['auth','teache
 // user route
 Route::group(['as'=>'user.','prefix'=>'user','middleware'=>['auth','user']],function (){
     Route::get('dashboard',[App\Http\Controllers\User\DashboardController::class,'index'])->name('dashboard');
+    Route::get('/enroll/{id}', [App\Http\Controllers\User\UserEnrollController::class, 'show'])->name('enroll');
+    Route::post('/enroll', [App\Http\Controllers\User\UserEnrollController::class, 'store'])->name('enroll.store');
+    Route::get('/course', [App\Http\Controllers\User\UserEnrollController::class, 'index'])->name('my.course');
+    Route::get('/view/{id}', [App\Http\Controllers\User\UserEnrollController::class, 'courseView'])->name('course.view');
 
 });
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
