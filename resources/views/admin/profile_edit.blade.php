@@ -1,6 +1,6 @@
 @extends('layouts.backend.app')
 
-@section('title','Post')
+@section('title','profile')
 
 @push('css')
     <!-- Bootstrap Select Css -->
@@ -11,33 +11,33 @@
     <div class="container-fluid">
         <!-- Vertical Layout | With Floating Label -->
         <form role="form" id="userFrom" method="POST"
-              action="{{ isset($user) ? route('admin.users.update',$user->id) : route('admin.users.store') }}"
+              action="{{  route('admin.profile.update',$user->id)  }}"
               enctype="multipart/form-data">
             @csrf
-            @if (isset($user))
-                @method('PUT')
-            @endif
+
             <div class="row clearfix">
                 <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
                             <h2>
-                                ADD NEW TEACHER
+                               PROFILE UPDATE
                             </h2>
                         </div>
                         <div class="body">
                             <div class="form-group form-float">
                                 <div class="form-line">
+                                    <input type="hidden" id="title" class="form-control" name="role"
+                                           value="{{ $user->role_id}}">
                                     <input type="text" id="title" class="form-control" name="name"
-                                           value="{{ $user->name ?? ''  }}">
-                                    <label class="form-label">Name</label>
+                                           value="{{ $user->name}}">
+                                    <label class="form-label"></label>
                                 </div>
                             </div>
                             <div class="form-group form-float">
                                 <div class="form-line">
                                     <input type="email" id="title" class="form-control" name="email"
-                                           value="{{ $user->email ?? ''  }}">
-                                    <label class="form-label">Email</label>
+                                           value="{{ $user->email   }}">
+                                    <label class="form-label"></label>
                                 </div>
                             </div>
                             <div class="form-group form-float">
@@ -54,50 +54,31 @@
                                     <label class="form-label">Confirm Password</label>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>
-                                Role
-                            </h2>
-                        </div>
-                        <div class="body">
-                            <div class="form-line {{ $errors->has('role') ? 'focused error' : '' }}">
-                                <label for="Role">Select Role</label>
-                                <select name="role" id="role" class="form-control show-tick" data-live-search="true" >
-                                    @foreach($roles as $key=>$role)
-                                        @if($role->id ==5)
-                                        <option value="{{ $role->id }}"
-                                        @isset($user)
-
-                                            {{ $user->role->id == $role->id ? 'selected' : '' }}
-
-                                            @endisset>
-                                            {{ $role->name}}
-                                        </option>
-                                        @endif
-                                    @endforeach
-                                </select>
-
-
+                <div class="row clearfix">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="card">
+                            <div class="header">
+                                <h2>
+                                    About Information
+                                </h2>
+                            </div>
+                            <div class="body">
+                                <textarea style=" height: 250px;" class="form-control"  id="tinymce" name="about">{{$user->about}}</textarea>
                             </div>
                         </div>
-                        <a  class="btn btn-danger m-t-15 waves-effect" href="{{ isset($user)? route('admin.dashboard'):route('admin.users.index')}}">BACK</a>
-                        <button type="submit" class="btn btn-primary">
-                            @if(isset($user))
-                                {{ __('Update User') }}
-                            @else
-                                {{ __('Create User') }}
-                            @endif
-                        </button>
-
                     </div>
                 </div>
             </div>
+            <button type="submit" class="btn btn-primary">
+                @if(isset($user))
+                    {{ __('Update User') }}
+                @else
+                    {{ __('Create User') }}
+                @endif
+            </button>
         </form>
     </div>
 @endsection

@@ -46,11 +46,14 @@
                 </div>
                 <div class="col-12 ">
                     <div class="input-group w-50  mx-auto pt-4">
-                        <input type="text" placeholder="Enter Your Email" aria-label="Recipient's "
+                        <form action="{{ route('subscriber.store') }}" method="POST" enctype="multipart/form-data">
+                       @csrf
+                        <input type="email" placeholder="Enter Your Email"    name="email" aria-label="Recipient's "
                                aria-describedby="my-addon">
-                        <div class="input-group-append">
-                            <span class="subscribe-text" id="my-addon">Subscribe</span>
-                        </div>
+                            <button type="submit" class="btn btn-primary">
+                            SUBSCRIBE
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>

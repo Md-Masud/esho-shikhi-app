@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Repository\Backend\CategoryRepository;
 use App\Repository\Teacher\PostRepository;
 
@@ -18,8 +19,10 @@ class DashboardController extends Controller
     }
     public function  index()
     {
-        $posts=$this->postRepository->getPostOfIndex();
-        return view('index',compact('posts'));
+        $users=User::all();
+
+        $posts=$this->postRepository->PostOfIndex();
+        return view('index',compact('posts','users'));
     }
     public  function  show($id)
     {

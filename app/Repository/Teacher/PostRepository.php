@@ -14,7 +14,8 @@ class PostRepository extends videoFIle
 {
     public  function getPostOfIndex()
     {
-        return $posts=Post::all();
+      $user_id=Auth::id();
+      return $posts=Post::where('user_id',$user_id)->get();
     }
     public  function  createPost($request)
     {
@@ -71,5 +72,10 @@ class PostRepository extends videoFIle
     public  function  deletePost($id)
     {
         return $this->getPostId($id)->delete();
+    }
+    public  function PostOfIndex()
+    {
+
+        return $posts=Post::all();
     }
 }

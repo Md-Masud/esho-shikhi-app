@@ -45,6 +45,12 @@
                 </a>
             </li>
             @if(Request::is('admin*'))
+                <li class="{{ Request::is('admin/profile') ? 'active' : '' }}">
+                    <a href="{{ route('admin.profile') }}">
+                        <i class="material-icons">dashboard</i>
+                        <span>Profile</span>
+                    </a>
+                </li>
                 <li class="{{ Request::is('admin/dashboard') ? 'active' : '' }}">
                     <a href="{{ route('admin.dashboard') }}">
                         <i class="material-icons">dashboard</i>
@@ -72,10 +78,16 @@
                 <li class="{{ Request::is('admin/courseEnroll*') ? 'active' : '' }}">
                     <a href="{{ route('admin.courseEnroll.index') }}">
                         <i class="material-icons">label</i>
-                        <span>CourseEnroll</span>
+                        <span>CourseEnrollCode</span>
                     </a>
                 </li
             @elseif(Request::is('teacher*'))
+                <li class="{{ Request::is('teacher/profile') ? 'active' : '' }}">
+                    <a href="{{ route('teacher.profile') }}">
+                        <i class="material-icons">dashboard</i>
+                        <span>Profile</span>
+                    </a>
+                </li>
                 <li class="{{ Request::is('teacher/dashboard') ? 'active' : '' }}">
                     <a href="{{ route('teacher.dashboard') }}">
                         <i class="material-icons">dashboard</i>
@@ -89,6 +101,12 @@
                     </a>
                 </li
             @else
+                <li class="{{ Request::is('user/profile') ? 'active' : '' }}">
+                    <a href="{{ route('user.profile') }}">
+                        <i class="material-icons">dashboard</i>
+                        <span>Profile</span>
+                    </a>
+                </li>
                 <li class="{{ Request::is('user/dashboard') ? 'active' : '' }}">
                     <a href="{{ route('user.dashboard') }}">
                         <i class="material-icons">dashboard</i>

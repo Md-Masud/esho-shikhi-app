@@ -46,6 +46,9 @@
                         <tbody>
                         @foreach($users as $key=>$user)
                             <td>
+                            @if ($user->role_id==5)
+
+
                                 <td class="text-center text-muted">#{{ $key + 1 }}</td>
                                 <td>
                                     <div class="widget-content p-0">
@@ -100,7 +103,9 @@
 {{--                                        @csrf--}}
 {{--                                        @method('DELETE')--}}
 {{--                                    </form>--}}
+                                @endif
                                 </td>
+
                             </tr>
                         @endforeach
                         </tbody>

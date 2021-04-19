@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\CourseEnroll;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CourseEnrollCreateRequest extends FormRequest
+class SubscriberStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,7 @@ class CourseEnrollCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'category_id'=>'required|unique:course_enrolls',
-            'password'=>'required',
+            'email'=>'required|unique:subscribers',
         ];
     }
 }

@@ -26,7 +26,7 @@ class StorePostRequest extends FormRequest
         return [
             'title' => 'required',
 //            'video' => 'required|mimes:mp4,ppx, ppt, pptx,pdf,ogv,jpg,webm|max:1999',
-             'category_id' => 'unique:categories',
+//             'category_id' => 'unique:categories',
             'body' => 'required',
         ];
     }

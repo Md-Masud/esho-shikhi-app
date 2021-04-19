@@ -6,17 +6,21 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Category\UpdateCategoryRequest;
 use App\Http\Requests\Teacher\Post\StorePostRequest;
 use App\Http\Requests\Teacher\Post\UpdatePostRequset;
+use App\Notifications\NewPostNotify;
 use App\Repository\Backend\CategoryRepository;
+use App\Repository\SubscriberRepository;
 use App\Repository\Teacher\PostRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class PostController extends Controller
 {
-    private $postRepository,$categoryRepository;
-    public function  __construct( PostRepository $postRepository,CategoryRepository $categoryRepository)
+    private $postRepository,$categoryRepository,$subscriberRepository;
+    public function  __construct( PostRepository $postRepository,CategoryRepository $categoryRepository,SubscriberRepository $subscriberRepository)
     {
         $this->postRepository=$postRepository;
         $this->categoryRepository=$categoryRepository;
+        $this->subscriberRepository=$subscriberRepository;
     }
     public function index()
     {
@@ -34,7 +38,16 @@ class PostController extends Controller
     public function store(StorePostRequest $storePostRequest)
     {
         try {
-            $this->postRepository->createPost($storePostRequest);
+            $post=$this->postRepository->createPost($storePostRequest);
+            $subscribers =$this->subscriberRepository->getSubscriberOfIndex();
+            if($post->is_approved == true) {
+
+
+                foreach ($subscribers as $subscriber) {
+                    Notification::route('mail', $subscriber->email)
+                        ->notify(new NewPostNotify($post));
+                }
+            }
             $this->setSuccessMessage('post Successfully Saved');
             return redirect()->back();
         } catch (Exception $e) {

@@ -31,6 +31,8 @@
                <h5 >INSTRUCTOR DETAILS</h5>
                <hr>
                <h5>{{$course->user->name}}</h5>
+               <p>{{$course->user->about}}</p>
+
                </div>
            </div>
        </div>

@@ -29,7 +29,8 @@ class UserController extends Controller
     public function create()
     {
         $roles=$this->roleRepository->getRoleOfIndex();
-        return view('admin.users.form',compact('roles'));
+
+     return view('admin.users.form',compact('roles'));
     }
 
     public function store(Request $request)
@@ -53,7 +54,9 @@ class UserController extends Controller
 
     public function edit($id)
     {
+
         $user=$this->userRepository->getUserId($id);
+
         $roles=$this->roleRepository->getRoleOfIndex();
         return view('admin.users.form',compact('user','roles'));
     }
@@ -62,7 +65,9 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         try {
+
             $this->userRepository->updateUser($id,$request);
+
             $this->setSuccessMessage('User Successfully Saved');
             return redirect()->back();
         } catch (Exception $e) {
@@ -81,4 +86,74 @@ class UserController extends Controller
             $this->setErrorMessage($e->getMessage());
         }
     }
+    public function  adminProfileView()
+    {
+        $user=$this->userRepository->profileUser();
+
+        return view('admin.profile',compact('user'));
+    }
+    public  function adminProfileEdit($id)
+    {
+        $user=$this->userRepository->getUserId($id);
+        return view('admin.profile_edit',compact('user'));
+    }
+    public  function  adminProfileUpdate($id, Request $request)
+    {
+        try {
+            $this->userRepository->updateUser($id, $request);
+            $this->setSuccessMessage('admin Successfully Update');
+            return redirect()->route('admin.profile');
+        } catch (Exception $e) {
+            $this->setErrorMessage($e->getMessage());
+        }
+
+    }
+    public function  teacherProfileView()
+    {
+        $user=$this->userRepository->profileUser();
+
+        return view('teacher.profile',compact('user'));
+    }
+    public  function teacherProfileEdit($id)
+    {
+
+        $user=$this->userRepository->getUserId($id);
+        return view('teacher.profile_edit',compact('user'));
+    }
+    public  function  teacherProfileUpdate($id, Request $request)
+    {
+        try {
+            $this->userRepository->updateUser($id,$request);
+
+            $this->setSuccessMessage('Teacher Successfully Update');
+            return redirect()->route('teacher.profile');
+        } catch (Exception $e) {
+            $this->setErrorMessage($e->getMessage());
+        }
+
+    }
+    public function  userProfileView()
+    {
+        $user=$this->userRepository->profileUser();
+
+        return view('user.profile',compact('user'));
+    }
+    public  function userProfileEdit($id)
+    {
+        $user=$this->userRepository->getUserId($id);
+        return view('user.profile_edit',compact('user'));
+    }
+    public  function  userProfileUpdate($id, Request $request)
+    {
+        try {
+            $this->userRepository->updateUser($id,$request);
+            $this->setSuccessMessage('User Successfully Update');
+            return redirect()->route('user.profile');
+        } catch (Exception $e) {
+            $this->setErrorMessage($e->getMessage());
+        }
+
+    }
+
+
 }

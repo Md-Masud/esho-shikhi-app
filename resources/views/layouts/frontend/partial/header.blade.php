@@ -10,12 +10,12 @@
                     <nav>
                         <u>
                             <i>
-                                <div class="search-box">
-                                    <form action="#">
-                                        <input type="text" placeholder="Search">
-                                        <button><i class="fas fa-search"></i></button>
-                                    </form>
-                                </div>
+{{--                                <div class="search-box">--}}
+{{--                                    <form action="#">--}}
+{{--                                        <input type="text" placeholder="Search">--}}
+{{--                                        <button><i class="fas fa-search"></i></button>--}}
+{{--                                    </form>--}}
+{{--                                </div>--}}
                             </i>
                         </u>
                         <ul>

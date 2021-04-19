@@ -22,7 +22,7 @@
                             @csrf
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text" id="name" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password">
+                                    <input type="password" id="name" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password">
                                     <label class="form-label">EnrollCode</label>
                                 </div>
                                 @if ($errors->has('password'))
